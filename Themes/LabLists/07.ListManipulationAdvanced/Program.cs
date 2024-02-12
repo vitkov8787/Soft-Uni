@@ -1,4 +1,6 @@
-﻿namespace _07.ListManipulationAdvanced
+﻿using System.Numerics;
+
+namespace _07.ListManipulationAdvanced
 {
     internal class Program
     {
@@ -8,12 +10,12 @@
                 .Split()
                 .Select(int.Parse)
                 .ToList();
-            int len =list.Count;
+            bool flag = false;
             while (true)
             {
                 string line = Console.ReadLine();
                 if (line == "end") {
-                    if(len!=list.Count)
+                    if (flag)
                     {
                         Console.WriteLine(string.Join(" ", list));
                     }
@@ -24,15 +26,19 @@
                 {
                     case "Add":
                         list.Add(int.Parse(comands[1]));
+                        flag = true;
                         break;
                     case "Remove":
                         list.Remove(int.Parse(comands[1]));
+                        flag = true;
                         break;
                     case "RemoveAt":
                         list.RemoveAt(int.Parse(comands[1]));
+                        flag = true;
                         break;
                     case "Insert":
                         list.Insert(int.Parse(comands[2]), int.Parse(comands[1]));
+                        flag = true;
                         break;
                     case "Contains":
                         if (list.Contains(int.Parse(comands[1])))
@@ -42,7 +48,7 @@
                         else Console.WriteLine("No such number");
                         break;
                     case "PrintEven":
-                        List<int> even = list.Where(item=>item%2==0).ToList();
+                        List<int> even = list.Where(item => item % 2 == 0).ToList();
                         Console.WriteLine(string.Join(" ", even));
                         break;
                     case "PrintOdd":
@@ -50,9 +56,10 @@
                         Console.WriteLine(string.Join(" ", odd));
                         break;
                     case "GetSum":
-                        int sum = 0;
+                        BigInteger sum = 0;
                         foreach (var item in list)
                         {
+
                             sum += item;
                         }
                         Console.WriteLine(sum);
