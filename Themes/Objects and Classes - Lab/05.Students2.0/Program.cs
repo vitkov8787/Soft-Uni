@@ -19,7 +19,7 @@
                 {
                     if (ojectItem.FirstName == arg[0] && ojectItem.LastName == arg[1])
                     {
-                        //празния обект присвоява съществувашия
+                        //refer
                         obj=ojectItem;
                     }
                 }
@@ -30,8 +30,7 @@
                 }
                 else
                 {
-                    //понеже празният обект вече не е празен(той вече е взел съществуващият
-                    //му сменяме само нужните данни
+                    
                     obj.Age = arg[2];
                     obj.HomeTown= arg[3];
                     input = Console.ReadLine();

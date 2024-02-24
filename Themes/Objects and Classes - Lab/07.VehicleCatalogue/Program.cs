@@ -26,8 +26,6 @@
                 }
                 input = Console.ReadLine();
             }
-            //catalog.ListCars.Sort();
-            //catalog.ListTrucks.Sort();
             catalog.ListCars = catalog.ListCars.OrderBy(car => car.Brand).ToList();
             catalog.ListTrucks = catalog.ListTrucks.OrderBy(truck => truck.Brand).ToList();
             if(catalog.ListCars.Count > 0)

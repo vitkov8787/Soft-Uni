@@ -16,7 +16,7 @@
                 //call the constructor with parameters
                 Song item = new Song(type, name, time);
 
-                /*or normal when we dont have constructor with parameters
+                /*or  
                 item.Name = name;
                 item.Time = time;
                 item.TypeList = type;
