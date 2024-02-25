@@ -48,7 +48,6 @@
             List<Vehicle> listVehicle = new List<Vehicle>();
             string input;
 
-            //create a vehicle and put it in the lsit
             while ((input = Console.ReadLine())!="End")
             {
                 string[] arg = input.Split();
@@ -58,12 +57,6 @@
             string input2;
             while((input2=Console.ReadLine())!="Close the Catalogue")
             {
-               /* Vehicle filt = listVehicle.FirstOrDefault(item=>item.Model== input2);
-                if (filt != null)
-                {
-                    filt.PrintInfo();
-                }
-               */
                List<Vehicle>filttered = listVehicle.Where(item=>item.Model == input2).ToList();
                 foreach (Vehicle item in filttered)
                 {
@@ -85,12 +78,7 @@
                      calc.CarHp = calc.CarHp+item.HorsePower;
                  }
              }
-            /*
-            double avg = listVehicle.Where(item => item.TypeOfVe == "car").Select(item => item.HorsePower).DefaultIfEmpty().Average();
-            Console.WriteLine($"Cars have average horsepower of: {avg:F2}.");
-            avg = listVehicle.Where(item => item.TypeOfVe == "truck").Select(item => item.HorsePower).DefaultIfEmpty().Average();
-            Console.WriteLine($"Trucks have average horsepower of: {avg:F2}.");
-             */
+          
             if (calc.CarCount>0)
             {
                 Console.WriteLine($"Cars have average horsepower of: {calc.CarAvg():F2}.");
