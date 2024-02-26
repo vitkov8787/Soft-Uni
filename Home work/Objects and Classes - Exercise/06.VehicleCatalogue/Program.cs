@@ -61,8 +61,7 @@
                 foreach (Vehicle item in filttered)
                 {
                     item.PrintInfo();
-                }
-              
+                }             
             }
              foreach(Vehicle item in listVehicle)
              {
