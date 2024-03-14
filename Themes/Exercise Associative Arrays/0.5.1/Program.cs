@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
+using System.Xml.Linq;
 
-namespace _05._Courses
+namespace _0._5._1
 {
     class Course
     {
@@ -17,13 +16,10 @@ namespace _05._Courses
 
         public override string ToString()
         {
-            StringBuilder result = new StringBuilder();
-            foreach (var item in StudentName)
-            {
-                result.AppendLine($"-- {item}");
-            }
-            return result.ToString();
+            return $"{CourseName}: {StudentName.Count}\n-- {string.Join("\n-- ", StudentName)}";
         }
+
+
     }
 
     class Program
@@ -48,9 +44,17 @@ namespace _05._Courses
 
             foreach (var item in dictionary)
             {
-                Console.WriteLine($"{item.Key}: {item.Value.StudentName.Count}");
                 Console.WriteLine($"{item.Value}");
             }
         }
     }
 }
+/*
+Algorithms : Jay Moore
+Programming Basics : Martin Taylor
+Python Fundamentals : John Anderson
+Python Fundamentals : Andrew Robinson
+Algorithms : Bob Jackson
+Python Fundamentals : Clark Lewis
+end
+ */
