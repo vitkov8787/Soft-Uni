@@ -1,0 +1,46 @@
+@model List<Car>
+
+<div class="card text-center">
+    <div class="card-header">
+        <h2>Parking Stantion Ruse</h2>
+        <p>
+        <div class="card-footer text-muted">
+            Cars currently in the parking: @Model.Count
+        </div>
+        <div>
+            <a href="@Url.Action("Create", "ParkingSystem")" class="btn btn-secondary">Register Car</a>
+        </div>
+        </p>
+    </div>
+    <div class="card-body">
+        @foreach (var item in Model)
+        {
+            <div class="card mx-auto" style="width: 18rem;">
+                <div class="card-body mx-auto">
+                    <h5 class="card-title">@item.Mark</h5>
+                    <p class="card-text">@item.Plate</p>
+
+                    <p class="card-text">@item.TimeAdded.ToString("yyyy-MM-dd HH:mm:ss")</p>
+                    <!-- Display the TimeAdded property -->
+                    <p>cost until now : @item.Cost lv</p>
+                    <div class="d-flex gap-3">
+                        <form method="post" asp-controller="ParkingSystem" asp-action="RemoveCar">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger">Remove Car</button>
+                        </form>
+                        <form method="get" asp-controller="ParkingSystem" asp-action="EditCar">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-green">Edit Car</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .btn-green {
+        background-color: #1E401D;
+        color: white;
+    }
+</style>
