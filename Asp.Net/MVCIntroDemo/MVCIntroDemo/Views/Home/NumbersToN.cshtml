@@ -1,0 +1,30 @@
+﻿@model int
+@{
+    ViewBag.Title = "Nums 1 ..." + ViewBag.Count;
+}
+<h2>@ViewBag.Title</h2>
+
+<ul>@for (int i = 1; i <= ViewBag.Count; i++)
+    {
+        <li>@i</li>
+    }</ul>
+
+<br />
+<a asp-action="NumbersToN" asp-route-count="20">First 20 Numbers</a>
+<br />
+
+<label for="countInput">Input Limit</label>
+<input type="number" id="countInput" value="50" />
+<button class="btn btn-primary" onclick="NumbersToN()">Set</button> 
+
+
+@section Scripts{
+    <script src="~/js/NumbersToN.js"></script>
+   }
+   </br>
+
+<form method="post" action="/Home/NumbersToN">
+    <label for="countInput">Input Limit</label>
+    <input type="number" id="countInput" name="count" value="@Model" />
+    <button class="btn-primary">Set</button>
+</form>
