@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using FetchAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FetchAPI.Controllers
@@ -10,22 +10,23 @@ namespace FetchAPI.Controllers
     {
         public async Task<IActionResult> Index()
         {
-            // call the API
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://catfact.ninja/fact");
+                client.BaseAddress = new Uri("https://catfact.ninja/");
                 var response = await client.GetAsync("fact");
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonString = await response.Content.ReadAsStringAsync();
-                    var apiModel = new Models.ApiModel();
-
-                    apiModel.Message = jsonString;
+                    var apiResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<CatFactApiResponse>(jsonString);
+                    var apiModel = new ApiModel
+                    {
+                        Message = apiResponse?.Fact
+                    };
                     return View(apiModel);
                 }
                 else
                 {
-                    //error\
+                    // Handle error
                     return View("Error");
                 }
             }
